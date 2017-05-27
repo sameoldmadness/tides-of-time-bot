@@ -1,0 +1,17 @@
+{
+  "name": "tides-of-time-bot",
+  "version": "0.0.1",
+  "description": "Telegram bot that play Tides of Time card game",
+  "main": "index.js",
+  "repository": "https://github.com/sameoldmadness/tides-of-time-bot",
+  "author": "Roman Paradeev <sameoldmadness@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "micro-bot -d ${NOW_URL}",
+    "deploy": "now -e BOT_TOKEN=" 
+  },
+  "dependencies": {
+    "micro-bot": "^1.3.0",
+    "telegraf": "^3.7.1"
+  }
+}
