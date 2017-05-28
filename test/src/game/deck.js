@@ -20,6 +20,12 @@ test('each card has a description', t => {
     });
 });
 
+test('card short description should fit in 28 characters', t => {
+    deck.forEach(card => {
+        t.true(card.shortDescription.length <= 28);
+    });
+});
+
 test('each card has a resolve function', t => {
     deck.forEach(card => {
         t.true(typeof card.resolve === 'function');

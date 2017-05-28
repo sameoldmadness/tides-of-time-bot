@@ -7,9 +7,8 @@ const markScene = require('./scenes/mark');
 
 const flow = new TelegrafFlow();
 
-flow.command('play', ctx => {
-    ctx.reply('New game is ready to begin');
-    ctx.reply('Shuffling the deck.');
+flow.command('play', async ctx => {
+    await ctx.reply('New game is ready to begin');
 
     ctx.session.game = createGame();
 

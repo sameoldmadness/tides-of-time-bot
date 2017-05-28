@@ -57,6 +57,10 @@ module.exports = (options = {}) => {
 
     const drawPile = [...deck];
 
+    drawPile.forEach(card => {
+        card.marked = false;
+    });
+
     if (shuffleDeck) {
         shuffle(drawPile);
     }

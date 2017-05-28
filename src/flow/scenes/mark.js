@@ -1,21 +1,18 @@
-const { Markup } = require('micro-bot');
 const { Scene } = require('telegraf-flow');
+
+const { replyWithDeck, getRandomInt } = require('../markup');
 
 const scene = new Scene('mark');
 
-scene.enter(ctx => {
-    ctx.reply('Here\'s your hand. Which card would you mark',
-        Markup.inlineKeyboard(
-            ctx.session.game.player1.hand.map((card, index) => {
-                return [Markup.callbackButton(card.short, String(index))]
-            })
-        ).extra()
-    );
+scene.enter(async ctx => {
+    const { game } = ctx.session;
+
+    await replyWithDeck('Keep one card', game.player1.hand, ctx);
 });
 
 scene.action(/\d+/, async ctx => {
     const player1choice = Number(ctx.match[0]);
-    const player2choice = 0;
+    const player2choice = getRandomInt(0, game.player2.hand.length - 1);
 
     const { game } = ctx.session;
 

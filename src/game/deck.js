@@ -15,7 +15,7 @@ const deck = [
 
     {
         description: 'Double the amount of your most numerous suit',
-        short: 'LARGEST SUIT ×2',
+        shortDescription: 'double most numerous suit',
         priority: priorities.high,
         resolve: player => {
             const maxOfSuit = Object.values(player.status.suits).sort().reverse()[0];
@@ -31,7 +31,7 @@ const deck = [
     {
         suit: '👑',
         description: 'For each 📜 gain 3 ⭐',
-        short: '[👑] EACH 📜 3⭐️',
+        shortDescription: '👑/ each 📜 gain 3⭐',
         priority: priorities.normal,
         resolve: player => {
             const count = player.status.suits['📜'] || 0;
@@ -44,7 +44,7 @@ const deck = [
     {
         suit: '🖐',
         description: 'For each set of 📜 🌿 gain 5 ⭐',
-        short: '[🖐] EACH 📜🌿 5⭐',
+        shortDescription: '🖐/ each 📜🌿 gain 5⭐',
         priority: priorities.normal,
         resolve: player => {
             const count = Math.min(player.status.suits['📜'] || 0, player.status.suits['🌿'] || 0);
@@ -57,7 +57,7 @@ const deck = [
     {
         suit: '👑',
         description: 'Win all ties',
-        short: '[👑] WIN TIES',
+        shortDescription: '👑/ win all ties',
         priority: priorities.high,
         resolve: player => {
             player.status.winTies = true;
@@ -66,7 +66,7 @@ const deck = [
 
     {
         description: 'For scoring the highest with a single card gain 8 ⭐',
-        short: 'SINGLE 8⭐',
+        shortDescription: 'best single 🎴 score gain 8⭐',
         priority: priorities.low,
         resolve: (player, other) => {
             const countPlayer = Math.max(...player.status.points);
@@ -81,7 +81,7 @@ const deck = [
     {
         suit: '🖐',
         description: 'For majority in 🌿 gain 7 ⭐',
-        short: '[🖐] MAJORITY 🌿 7⭐',
+        shortDescription: '🖐/ majority in 🌿 gain 7⭐',
         priority: priorities.normal,
         resolve: (player, other) => {
             if (hasMajority('🌿', player, other)) {
@@ -93,7 +93,7 @@ const deck = [
     {
         suit: '🌿',
         description: 'For majority in 👑 gain 7 ⭐',
-        short: '[🌿] MAJORITY 👑 7⭐',
+        shortDescription: '🌿/ majority in 👑 gain 7⭐',
         priority: priorities.normal,
         resolve: (player, other) => {
             if (hasMajority('👑', player, other)) {
@@ -105,7 +105,7 @@ const deck = [
     {
         suit: '🌿',
         description: 'For a set of 👑 🏰 🌿 📜 🖐 gain 13 ⭐',
-        short: '[🌿] 👑🏰🌿📜🖐 13⭐',
+        shortDescription: '🌿/ 👑🏰🌿📜🖐 gain 13⭐',
         priority: priorities.normal,
         resolve: player => {
             const count = Math.min(
@@ -123,7 +123,7 @@ const deck = [
     {
         suit: '📜',
         description: 'For each 🌿 gain 3 ⭐',
-        short: '[📜] EACH 🌿 3⭐',
+        shortDescription: '📜/ each 🌿 gain 3⭐',
         priority: priorities.normal,
         resolve: player => {
             const count = player.status.suits['🌿'] || 0;
@@ -136,7 +136,7 @@ const deck = [
     {
         suit: '👑',
         description: 'For majority in 🏰 gain 7 ⭐',
-        short: '[👑] MAJORITY 🏰 7⭐',
+        shortDescription: '👑/ majority in 🏰 gain 7⭐',
         priority: priorities.normal,
         resolve: (player, other) => {
             if (hasMajority('🏰', player, other)) {
@@ -148,7 +148,7 @@ const deck = [
     {
         suit: '📜',
         description: 'For majority in 🖐 gain 7 ⭐',
-        short: '[📜] MAJORITY 🖐 7⭐',
+        shortDescription: '📜/ majority in 🖐 gain 7⭐',
         priority: priorities.normal,
         resolve: (player, other) => {
             if (hasMajority('🖐', player, other)) {
@@ -160,7 +160,7 @@ const deck = [
     {
         suit: '🏰',
         description: 'For each suit you don\'t have gain 3 ⭐',
-        short: '[🏰] EACH 🙅 3⭐',
+        shortDescription: '🏰/ each ∅ suit gain 3⭐',
         priority: priorities.normal,
         resolve: player => {
             const count = 5 - Object.keys(player.status.suits).length;
@@ -173,7 +173,7 @@ const deck = [
     {
         suit: '🌿',
         description: 'For each 🏰 gain 3 ⭐',
-        short: '[🌿] EACH 🏰 3⭐',
+        shortDescription: '🌿/ each 🏰 gain 3⭐',
         priority: priorities.normal,
         resolve: player => {
             const count = player.status.suits['🏰'] || 0;
@@ -186,7 +186,7 @@ const deck = [
     {
         suit: '🏰',
         description: 'For each 🖐 gain 3 ⭐',
-        short: '[🏰] EACH 🖐 3⭐',
+        shortDescription: '🏰/ each 🖐 gain 3⭐',
         priority: priorities.normal,
         resolve: player => {
             const count = player.status.suits['🖐'] || 0;
@@ -199,7 +199,7 @@ const deck = [
     {
         suit: '📜',
         description: 'For each set of 👑 🏰 🖐 gain 9 ⭐',
-        short: '[📜] EACH 👑🏰🖐 9⭐',
+        shortDescription: '📜/ each 👑🏰🖐 gain 9⭐',
         priority: priorities.normal,
         resolve: player => {
             const count = Math.min(player.status.suits['👑'] || 0, player.status.suits['🏰'] || 0, player.status.suits['🖐'] || 0);
@@ -212,7 +212,7 @@ const deck = [
     {
         suit: '🏰',
         description: 'For majority in 📜 gain 7 ⭐',
-        short: '[🏰] MAJORITY 📜 7⭐',
+        shortDescription: '🏰/ majority in 📜 gain 7⭐',
         priority: priorities.normal,
         resolve: (player, other) => {
             if (hasMajority('📜', player, other, 1)) {
@@ -223,7 +223,7 @@ const deck = [
 
     {
         description: 'For majority in suits with only one card gain 8 ⭐',
-        short: 'MAJORITY ONE 8⭐',
+        shortDescription: 'max suit with one 🎴 gain 8⭐',
         priority: priorities.normal,
         resolve: (player, other) => {
             const countPlayer = Object.values(player.status.suits).filter(x => x === 1).length;
@@ -238,7 +238,7 @@ const deck = [
     {
         suit: '🖐',
         description: 'For each 👑 gain 3 ⭐',
-        short: '[🖐] EACH 👑 3⭐',
+        shortDescription: '🖐/ each 👑 gain 3⭐',
         priority: priorities.normal,
         resolve: player => {
             const count = player.status.suits['👑'] || 0;
